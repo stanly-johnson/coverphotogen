@@ -1,2 +1,3 @@
 # coverphotogen
-Cover Photo Generator designed for Cynosure 2015
+
+Facebook Cover Photo Generator
