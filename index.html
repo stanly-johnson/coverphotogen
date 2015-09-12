@@ -15,18 +15,23 @@
 <script type="text/javascript" src="scripts/jquery.Jcrop.js"></script>
 <script type="text/javascript" src="scripts/jquery.SimpleCropper.js"></script>
 <script type="text/javascript" src="scripts/html2canvas.js"></script>
+<script type="text/javascript" src="scripts/jquery.plugin.html2canvas.js"></script>
 </head>
 <style type="text/css">
 .simple-cropper-images{
   margin: 0 auto;
 }
 </style>
+<script>
+	allowTaint : true;
+
+</script>
 <body>
 <div class="container">		
    
 	<div id="centrethis">
 		<div class="span4 cropme" id="portrait" style="width: 330px; height: 315px;"></div>
-		<img src="images/cover 1.png" class='main'/>		
+		<div><img src="images/cover 1.png" class='main'/></div>		
 	</div>
      <br/>
 	<input type="button" id="btnSave" value="Save PNG"/>
@@ -49,21 +54,33 @@ $('.cropme').click(function (){
 
 
 
-    $("#btnSave").click(function() {
-        html2canvas($("#centrethis"), {
-            onrendered: function(canvas) {
-                theCanvas = canvas;
-                document.body.appendChild(canvas);
+  /* 
+ $("#btnSave").click(function() {
+ html2canvas($('#centrethis'), {
+  onrendered: function(canvas) {
+  	var img;
+  	
+    var img = canvas.toDataURL()
+    window.open(img);
+  }
+});
 
-                // Convert and download as image
-                Canvas2Image.saveAsPNG(canvas);
-                $("#img-out").append(canvas);
-                // Clean up
-                //document.body.removeChild(canvas);
-            }
-        });
-    });
+  }); */
 
+$("#btnSave").click(function() {
+	$('#btnSave').hide();
+html2canvas(document.body,{
+	allowTaint: true,
+                logging: true,
+                taintTest: false,
+                onrendered:function(canvas){
+      document.body.appendChild(canvas);
+   },
+   
+});
+   $('.main').hide();
+   $('.cropme').hide();
+ });  
 
 </script>
 
