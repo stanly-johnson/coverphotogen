@@ -22,11 +22,18 @@
 }
 </style>
 <body>
-<div class="container">	
-	<div class="row" id="centrethis">	
+<div class="container">		
+   
+	<div id="centrethis">
 		<div class="span4 cropme" id="portrait" style="width: 330px; height: 315px;"></div>
 		<img src="images/cover 1.png" class='main'/>		
 	</div>
+     <br/>
+	<input type="button" id="btnSave" value="Save PNG"/>
+
+
+	<div id="img-out"></div>
+
 </div>
 
 <div class="clear"></div>
@@ -34,16 +41,28 @@
  // Init Simple Cropper
 $('.cropme').simpleCropper();
 $('.main').hide();
-$('.switch').click(function (){
-    $(this).text("Switch to "+($('#portrait').is(":visible") ? "Portrait" : "Landscape"));
-  $('#portrait').toggle();
-  $('#landscape').toggle();
-});
+
 
 $('.cropme').click(function (){ 
 	$('.main').show();
-
 });
+
+
+
+    $("#btnSave").click(function() {
+        html2canvas($("#centrethis"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+                document.body.appendChild(canvas);
+
+                // Convert and download as image
+                Canvas2Image.saveAsPNG(canvas);
+                $("#img-out").append(canvas);
+                // Clean up
+                //document.body.removeChild(canvas);
+            }
+        });
+    });
 
 
 </script>

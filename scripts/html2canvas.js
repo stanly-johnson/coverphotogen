@@ -671,6 +671,8 @@ function crop(canvas, bounds) {
     log("Cropping canvas at:", "left:", bounds.left, "top:", bounds.top, "width:", (x2-x1), "height:", (y2-y1));
     log("Resulting crop with width", bounds.width, "and height", bounds.height, " with x", x1, "and y", y1);
     croppedCanvas.getContext("2d").drawImage(canvas, x1, y1, x2-x1, y2-y1, bounds.x, bounds.y, x2-x1, y2-y1);
+    //var imgData = canvas.getContext("2d").getImageData(bounds.left, bounds.top, bounds.width, bounds.height);
+    //ctx.putImageData(imgData, 0, 0);
     return croppedCanvas;
 }
 

@@ -9,6 +9,11 @@
     position: absolute;
      } 
 
+#btnSave{
+  position: absolute;
+}
+
+
 #portrait {
     position: absolute;
     left: 520px;
