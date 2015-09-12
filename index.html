@@ -34,7 +34,7 @@
 		<div><img src="images/cover 1.png" class='main'/></div>		
 	</div>
      <br/>
-	<input type="button" id="btnSave" value="Save PNG"/>
+	<input type="button" id="btnSave" value="Save as PNG file"/>
 
 
 	<div id="img-out"></div>
@@ -46,10 +46,12 @@
  // Init Simple Cropper
 $('.cropme').simpleCropper();
 $('.main').hide();
+$('#btnSave').hide();
 
 
 $('.cropme').click(function (){ 
 	$('.main').show();
+	$('#btnSave').show();
 });
 
 
