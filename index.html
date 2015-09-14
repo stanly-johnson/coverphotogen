@@ -27,18 +27,23 @@
 
 </script>
 <body>
-<div class="container">		
+<div class="container">	
+
    
-	<div id="centrethis">
-		<div class="span4 cropme" id="portrait" style="width: 330px; height: 315px;"></div>
-		<div><img src="images/cover 1.png" class='main'/></div>		
-	</div>
+	<!--><div id="centrethis"><!-->
+	<p>
+		<div class="cropme" id="portrait" style="width: 330px; height: 315px;"></div>
+		<div><img src="images/cover 1.png" class='main'/></div>	
+
+    </p>
+	
+	
+
      <br/>
 	<input type="button" id="btnSave" value="Save as PNG file"/>
 
 
-	<div id="img-out"></div>
-
+	
 </div>
 
 <div class="clear"></div>
@@ -71,7 +76,7 @@ $('.cropme').click(function (){
 
 $("#btnSave").click(function() {
 	$('#btnSave').hide();
-html2canvas(document.body,{
+html2canvas(document.p,{
 	allowTaint: true,
                 logging: true,
                 taintTest: false,
